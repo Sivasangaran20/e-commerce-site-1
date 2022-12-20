@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+}
+
+nav .navbar-nav a {
+    padding: 10px;
+    text-decoration: none;
+    float: left;
+}
+a{
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+img{
+    width: 300px;
+    height: 250px;
+}
+.card img{
+    width: 300px;
+    height: 250px;
+}
+
+.card {
+    display: flex;
+    width: 270px;
+    height: 350px;
+    background: rgb(255, 255, 255);
+    border-radius: 0.4em;
+    box-shadow: 0.3em 0.3em 0.7em #00000015;
+    transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: rgb(250, 250, 250) 0.2em solid;
+}
+
+.card:hover {
+    border: #006fff 0.2em solid;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+}
+
+.container a {
+    background-position: absolute;
+}
+
+.counter {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter input {
+    width: 50px;
+    border: 0;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    background: #0052cc;
+    color: #fff;
+    appearance: none;
+    outline: 0;
+}
+
+.counter span {
+    display: block;
+    font-size: 25px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #0052cc;
+    user-select: none;
+}
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
+}
+.card-body{
+    display: flex;
+    width: 100%;
+    height: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 0.4em;
+    box-shadow: 0.3em 0.3em 0.7em #00000015;
+    transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: rgb(250, 250, 250) 0.2em solid;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bag Source</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script type="text/javascript">
+    function showMessage() {
+      document.getElementById("demo").innerHTML = "Item added";
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="navbar-brand" href="/products/">Products</a>
+              <a class="navbar-brand" href="/carts/user">Carts</a>
+              <a class="navbar-brand" href="/logout">Logout</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="row mt-4 mb-4">
+      <div class="col-md-5 mt-2 mr-2 ml-auto">
+        <div class="img-hover-zoom">
+          <img src="<%=product.image%>" class="img-fluid product-img" alt="product image" />
+        </div>
+      </div>
+      <div class="col-md-5 mt-2 mb-2 ml-2 mr-auto text-dark">
+        <form action="/carts/add-to-cart/<%=product._id%>" method="post">
+          <p style="text-transform: uppercase;"><strong>
+              <%=product.title%>
+            </strong></p>
+          <hr />
+          <p class="lead"><strong>Description:</strong>
+          <p>
+            <%=product.description%>
+          </p>
+          </p>
+          <p><strong>Category:</strong>
+            <%=product.categories%>
+          </p>
+          <p><strong>Size:</strong>
+            <%=product.size%>
+          </p>
+          <p><strong>Color:</strong>
+            <%=product.color%>
+          </p>
+          <p class="is-available" style="color: green;">In stock</p>
+          <p class="price" name="price" style="font-size: 30px;">Rupee ₹<span id="orignalprice">
+              <%=product.price%>
+            </span>
+          </p>
+          <!-- <label>Qty:
+            <input type="number" name="quantity"  max="5" min="1" maxlength="1" required>
+          </label> -->
+          <div class="counter">
+            <span class="down" onClick='decreaseCount(event, this)'>-</span>
+            <input type="text" name="quantity" value="1" max="5">
+            <span class="up" onClick='increaseCount(event, this)'>+</span>
+            <label class="total">TotalPrice:<span id="calcamount" name="totalPrice"></span></label>
+          </div>
+
+          <br>
+          <button class="btn btn-block btn-secondary mt-3 mb-3 button-style" onClick="showMessage()">
+            Add to Cart
+          </button>
+
+          <p id="demo"></p>
+        </form>
+        <a class="btn btn-block btn-secondary mt-3 mb-3 button-style" href="/orders/user/">Order</a>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function increaseCount(a, b) {
+      var input = b.previousElementSibling;
+      var value = parseInt(input.value) + 1;
+      value = isNaN(value) ? 1 : value;
+      // value ++;
+      input.value = value;
+      //var amount=input.value*$('#price')
+      var price = document.getElementById("orignalprice").innerHTML;
+      var calcamount = document.getElementById("calcamount");
+      calcamount.innerHTML = (parseFloat(price) * parseInt(value));
+    }
+    function decreaseCount(a, b) {
+      var input = b.nextElementSibling;
+      var value = parseInt(input.value) - 1;
+      if (value > 0) {
+        value = isNaN(value) ? 1 : value;
+        // value --;
+        input.value = value;
+        var price = document.getElementById("orignalprice").innerHTML;
+        var calcamount = document.getElementById("calcamount");
+        calcamount.innerHTML = (parseFloat(price) * parseInt(value));
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
